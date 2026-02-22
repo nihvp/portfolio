@@ -7,7 +7,7 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&family=Just+Another+Hand&family=Cedarville+Cursive&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&family=Cedarville+Cursive&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     
     <link rel="preload" href="assets/brain_3d.glb" as="fetch" crossorigin="anonymous">
@@ -26,6 +26,14 @@
 <body>
     <div class="bg-texture"></div>
 
+    <div class="global-spotlight"></div>
+
+    <div class="bg-elements">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+
     <nav class="glass-nav">
         <a href="#home">Home</a>
         <a href="#about">About</a>
@@ -35,38 +43,35 @@
 
     <main>
         <section id="home" class="hero-section">
+
+            <!-- <div class="hero-spotlight"></div> -->
+
             <div class="hero-content">
-                <div id="model-container"></div>
+                
+                <div class="model-wrapper">
+                    <img id="model-placeholder" src="assets/brain_gold.jpg" alt="Loading..." loading="eager">
+                    <div id="model-container"></div>
+                </div>
 
                 <h1 class="hero-title">Hi, I'm Muhammed Nihal</h1>
                 <h2 class="subheading">Code ❖ Create ❖ Enjoy</h2>
-                <p class="body-text">"Jack of all trades master of none, though often times better than master of one."</p>
+                <p class="body-text">"Jack of all trades master of none, though oftentimes better than master of one."</p>
                 
                 <div class="social-links">
                     <a href="https://github.com/nihvp" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
                     <a href="https://linkedin.com/in/mnih" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
                     <a href="https://twitter.com/nihvp" target="_blank" rel="noopener noreferrer"><i class="fab fa-x-twitter"></i></a>
-                    <div class="email-wrapper">
-                        <a href="mailto:nihvp@outlook.com" class="mail-icon"><i class="fas fa-envelope"></i></a>
-                        <div class="arrow-container">
-                            <svg class="lime-arrow" width="30" height="50" viewBox="0 0 30 50">
-                                <path d="M 15 45 Q 25 25 15 5" fill="transparent" stroke="#32CD32" stroke-width="3" stroke-linecap="round"/>
-                                <polyline points="8,12 15,5 22,12" fill="transparent" stroke="#32CD32" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                            <span class="handwritten-text">Contact me</span>
-                        </div>
-                    </div>
+                    <a href="mailto:nihvp@outlook.com" class="mail-icon"><i class="fas fa-envelope"></i></a>
                 </div>
             </div>
-
-            </section>
+        </section>
 
         <section id="about" class="about-section">
             <div class="frosted-container about-container humidify">
                 <img src="assets/brain_gold.png" alt="Muhammed Nihal" class="square-photo" loading="lazy">
                 <div class="about-text">
                     <h2>About Me</h2>
-                    <p>I am a senior Computer Science undergraduate with hands-on experience in software development, ai engineering and programming tutoring. Proficient in Python, C++, and Java, with a strong foundation in data structures and algorithms. Passionate about building efficient solutions!</p>
+                    <p>I am a senior Computer Science undergraduate with hands-on experience in software development, AI engineering and programming tutoring. Proficient in Python, C++, and Java, with a strong foundation in data structures and algorithms. Passionate about building efficient solutions!</p>
                 </div>
             </div>
         </section>
@@ -82,21 +87,33 @@
             </div>
             
             <div class="projects-grid">
-                <div class="frosted-card interactive-card humidify" data-type="project" data-category="Codes" data-title="Coffee Plantation Image Classification" data-desc="Built an automated computer vision pipeline (CNN, SVM, Random Forest) to classify coffee ripeness from aerial drone imagery.|Solved severe class imbalance in unstructured data via custom feature extraction and resampling, ensuring high model generalization." data-link="https://github.com/nihvp/coffee-plant-ripeness-detector" data-imgs="assets/coffee_full.jpg">
+                <div class="frosted-card interactive-card humidify" data-type="project" data-category="Codes" data-link="https://github.com/nihvp/coffee-plant-ripeness-detector" data-imgs="assets/coffee_full.jpg">
                     <img src="assets/coffee_square.jpg" alt="Project 1" class="card-img" loading="lazy">
                     <div class="card-info">
-                        <h3>Coffee Plantation Image Classification</h3>
-                        <p>Computer vision model to classify coffee ripeness from aerial drone imagery.</p>
+                        <h3 class="card-title">Coffee Plantation Image Classification</h3>
+                        <p class="card-summary">Computer vision model to classify coffee ripeness from aerial drone imagery.</p>
                         <span class="keyword-tag">Codes</span>
+                    </div>
+                    <div class="modal-hidden-content">
+                        <i class="fa-brands fa-python" style="color: #3776AB; font-size: 1.2rem;"></i> Python &nbsp;
+                        <i class="fa-solid fa-chart-line" style="color: var(--lime-green); font-size: 1.2rem;"></i> Data Science<br><br>
+                        ☞ Built an automated computer vision pipeline (CNN, SVM, Random Forest) to classify coffee ripeness from aerial drone imagery.<br><br>
+                        ☞ Solved severe class imbalance in unstructured data via custom feature extraction and resampling, ensuring high model generalization.
                     </div>
                 </div>
 
-                <div class="frosted-card interactive-card humidify" data-type="project" data-category="Codes" data-title="Khadar - Smart Urban Farming System" data-desc="Built a mobile-first urban farming platform (React Native, Flask) facilitating real-time green space monitoring for UAE residents. | Deployed AI-driven crop analytics using XGBoost to provide automated yield predictions and health recommendations. | Streamlined operations for multi-stakeholder teams through secure role-based access and centralized sensor data visualization." data-link="https://github.com/amxr21/Khadar-mobile-app" data-img="assets/khadar_full.png">
+                <div class="frosted-card interactive-card humidify" data-type="project" data-category="Codes" data-link="https://github.com/amxr21/Khadar-mobile-app" data-imgs="assets/khadar_full.png">
                     <img src="assets/khadar_square.png" alt="Project 2" class="card-img" loading="lazy">
                     <div class="card-info">
-                        <h3>Khadar - Smart Urban Farming System</h3>
-                        <p>Smart urban farming and green space management application designed for UAE residents.</p>
+                        <h3 class="card-title">Khadar - Smart Urban Farming System</h3>
+                        <p class="card-summary">Smart urban farming and green space management application designed for UAE residents.</p>
                         <span class="keyword-tag">Codes</span>
+                    </div>
+                    <div class="modal-hidden-content">
+                        <i class="fa-brands fa-react" style="color: #61DAFB; font-size: 1.2rem;"></i> React Native &nbsp;
+                        <i class="fa-brands fa-python" style="color: #3776AB; font-size: 1.2rem;"></i> Flask<br><br>
+                        ☞ Built a mobile-first urban farming platform (React Native, Flask) facilitating real-time green space monitoring for UAE residents.<br><br>
+                        ☞ Deployed AI-driven crop analytics using XGBoost to provide automated yield predictions and health recommendations. Streamlined operations for multi-stakeholder teams through secure role-based access and centralized sensor data visualization.
                     </div>
                 </div>
             </div>
@@ -105,14 +122,17 @@
         <section id="experience" class="experience-section">
             <h2>Experience</h2>
             <div class="experience-grid">
-                <div class="frosted-card interactive-card humidify" data-type="experience" data-title="Programming Tutor at University of Sharjah" data-desc="Delivered personalized C++ programming lessons to students, focusing on foundational concepts and practical applications. |Simplified complex topics such as algorithms, data structures, and object-oriented programming for better understanding. | Designed tailored learning plans to address individual strengths and areas for improvement." data-link="https://sharjah.ac.ae" data-img="assets/uos_full.jpg">
+                <div class="frosted-card interactive-card humidify" data-type="experience" data-link="https://sharjah.ac.ae" data-imgs="assets/uos_full.jpg">
                     <img src="assets/uos_square.png" alt="Company Logo" class="card-img" loading="lazy">
                     <div class="card-info">
-                        <h3>Programming Tutor at University of Sharjah</h3>
-                        <p>Delivered personalized C++ programming lessons to students.</p>
+                        <h3 class="card-title">Programming Tutor at University of Sharjah</h3>
+                        <p class="card-summary">Delivered personalized C++ programming lessons to students.</p>
+                    </div>
+                    <div class="modal-hidden-content">
+                        ☞ Delivered personalized C++ programming lessons to students, focusing on foundational concepts and practical applications.<br><br>
+                        ☞ Simplified complex topics such as algorithms, data structures, and object-oriented programming for better understanding. Designed tailored learning plans to address individual strengths and areas for improvement.
                     </div>
                 </div>
-                
             </div>
         </section>
     </main>
@@ -122,16 +142,26 @@
     </footer>
 
     <div id="detail-modal" class="modal-overlay">
-        <div class="modal-content frosted-container">
+        <div class="modal-content frosted-container humidify">
             <span class="close-btn">&times;</span>
-            <div class="modal-gallery" id="modal-gallery"></div>
+            
+            <div class="gallery-wrapper">
+                <button class="gallery-nav prev-btn" id="gallery-prev"><i class="fas fa-chevron-left"></i></button>
+                <div class="modal-gallery" id="modal-gallery"></div>
+                <button class="gallery-nav next-btn" id="gallery-next"><i class="fas fa-chevron-right"></i></button>
+            </div>
+
             <div class="modal-text">
-                <h2 id="modal-title">Title</h2>
-                <p id="modal-desc">Detailed Description...</p>
-                <div class="modal-footer">
-                    <span class="keyword-tag" id="modal-keyword">Keyword</span>
+                <div class="modal-title-wrapper">
+                    <h2 id="modal-title">Title</h2>
                     <a href="#" id="modal-link" target="_blank" rel="noopener noreferrer" class="modal-icon"><i class="fas fa-external-link-alt"></i></a>
                 </div>
+                
+                <div id="modal-desc" class="modal-desc-body"></div>
+                
+                <div class="modal-footer">
+                    <span class="keyword-tag" id="modal-keyword">Keyword</span>
+                    </div>
             </div>
         </div>
     </div>
@@ -141,27 +171,43 @@
     <script type="module">
         import * as THREE from 'three';
         import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+        import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
         const container = document.getElementById('model-container');
-        const scene = new THREE.Scene();
+        const placeholder = document.getElementById('model-placeholder');
         
+        const scene = new THREE.Scene();
         const width = container.clientWidth;
         const height = container.clientHeight;
         const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000);
-        camera.position.z = 10;
+        camera.position.z = 12; // Pulled back slightly for the localized container
 
-        // Optimized Renderer: high-performance power preference and antialiasing
         const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true, powerPreference: "high-performance" });
         renderer.setSize(width, height);
-        // Cap pixel ratio to 2 to prevent extreme GPU drain on mobile devices
         renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
         container.appendChild(renderer.domElement);
 
-        const ambientLight = new THREE.AmbientLight(0xffffff, 2.5);
+        // Add OrbitControls for interactivity
+        const controls = new OrbitControls(camera, renderer.domElement);
+        controls.enableDamping = true; 
+        controls.dampingFactor = 0.05;
+        controls.enableZoom = false; // Prevents zooming and scrolling page layout issues
+        controls.autoRotate = true; 
+        controls.autoRotateSpeed = 1.5;
+
+        // 1. Increase Ambient Light to brighten the entire model evenly
+        const ambientLight = new THREE.AmbientLight(0xffffff, 6.0); // Increased from 2.5
         scene.add(ambientLight);
-        const directionalLight = new THREE.DirectionalLight(0xffffff, 3);
+
+        // 2. Increase the main Directional Light (front/top right)
+        const directionalLight = new THREE.DirectionalLight(0xffffff, 6.5); // Increased from 3
         directionalLight.position.set(5, 5, 5);
         scene.add(directionalLight);
+
+        // 3. NEW: Add a secondary "Fill Light" to remove dark shadows on the back/bottom
+        const fillLight = new THREE.DirectionalLight(0xffffff, 6.0);
+        fillLight.position.set(-5, -2, -5); // Positioned opposite to the main light
+        scene.add(fillLight);
 
         let brainModel;
         const loader = new GLTFLoader();
@@ -175,22 +221,27 @@
                 const center = box.getCenter(new THREE.Vector3());
                 brainModel.position.sub(center); 
                 
+                // NEW: Manually nudge the model up or down. 
+                // Negative numbers move it DOWN, positive numbers move it UP.
+                // Try -0.5, -1.0, or 0.5 until it sits perfectly in the middle.
+                brainModel.position.y -= 2.5;
+
                 const size = box.getSize(new THREE.Vector3());
                 const maxDim = Math.max(size.x, size.y, size.z);
-                const targetSize = 4.0; 
+                const targetSize = 8.0; 
                 const scaleRatio = targetSize / maxDim;
                 brainModel.scale.set(scaleRatio, scaleRatio, scaleRatio); 
                 
                 scene.add(brainModel);
 
-                // 1. Reveal the 3D Model
+                // Reveal model and hide placeholder
+                placeholder.classList.add('hidden');
                 container.classList.add('loaded');
-                
-                // 2. Reveal the Brain Fact & Arrow
-                const brainFact = document.querySelector('.brain-fact');
-                if (brainFact) {
-                    brainFact.classList.add('loaded');
-                }
+
+                // NEW: Completely removes the image from the DOM layout after 500ms (the duration of the fade)
+                setTimeout(() => {
+                    placeholder.style.display = 'none';
+                }, 500);
             },
             undefined,
             function (error) {
@@ -198,17 +249,13 @@
             }
         ); 
 
-        function animateModel(time) {
+        function animateModel() {
             requestAnimationFrame(animateModel);
-            if (brainModel) {
-                brainModel.rotation.y += 0.003; 
-                brainModel.rotation.x = Math.sin(time * 0.001) * 0.1; 
-            }
+            controls.update(); // Required for damping and auto-rotate
             renderer.render(scene, camera);
         }
         requestAnimationFrame(animateModel);
 
-        // Throttle resize event using requestAnimationFrame
         let resizeTicking = false;
         window.addEventListener('resize', () => {
             if (!resizeTicking) {

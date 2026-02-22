@@ -53,7 +53,7 @@ function filterProjects(category) {
 }
 
 // ==========================================
-// 3. Smart Modal Popup Logic
+// 3. Smart Modal Popup & HTML Injection Logic
 // ==========================================
 const modal = document.getElementById('detail-modal');
 const closeBtn = document.querySelector('.close-btn');
@@ -63,39 +63,29 @@ const modalDesc = document.getElementById('modal-desc');
 const modalKeyword = document.getElementById('modal-keyword');
 const modalLink = document.getElementById('modal-link');
 
+// Gallery Navigation
+const prevBtn = document.getElementById('gallery-prev');
+const nextBtn = document.getElementById('gallery-next');
+
 interactiveCards.forEach(card => {
     card.addEventListener('click', () => {
-        // 1. Smart Inheritance
-        const cardTitle = card.querySelector('h3') ? card.querySelector('h3').innerText : 'Project';
-        const cardDesc = card.querySelector('.card-info p') ? card.querySelector('.card-info p').innerText : '';
+        // 1. Inject HTML Content
+        const cardTitle = card.querySelector('.card-title') ? card.querySelector('.card-title').innerText : 'Project Details';
+        const hiddenHtml = card.querySelector('.modal-hidden-content') ? card.querySelector('.modal-hidden-content').innerHTML : '';
         
-        modalTitle.innerText = card.getAttribute('data-title') || cardTitle;
-        const rawDesc = card.getAttribute('data-desc') || cardDesc;
-
-        // Check if the description contains our separator '|'
-        if (rawDesc.includes('|')) {
-            // Split the text at the '|', remove extra spaces, and wrap in <li> tags
-            const listItems = rawDesc.split('|').map(point => `<li>${point.trim()}</li>`).join('');
-            // Render as an HTML unordered list
-            modalDesc.innerHTML = `<ul class="modal-desc-list">${listItems}</ul>`;
-        } else {
-            // Fallback for regular text paragraphs
-            modalDesc.innerText = rawDesc;
-        }
+        modalTitle.innerText = cardTitle;
+        modalDesc.innerHTML = hiddenHtml; // Allows <br>, FontAwesome icons, and custom styling
         
         // 2. Multi-Image Gallery Logic
         if (modalGallery) {
             modalGallery.innerHTML = ''; 
             let imgs = [];
             
-            const dataImgs = card.getAttribute('data-imgs'); 
-            const dataImg = card.getAttribute('data-img');   
+            const dataImgs = card.getAttribute('data-imgs');   
             const thumbnail = card.querySelector('.card-img') ? card.querySelector('.card-img').src : ''; 
 
             if (dataImgs) {
                 imgs = dataImgs.split(',').map(img => img.trim());
-            } else if (dataImg) {
-                imgs = [dataImg];
             } else if (thumbnail) {
                 imgs = [thumbnail];
             }
@@ -106,6 +96,15 @@ interactiveCards.forEach(card => {
                 imgEl.loading = 'lazy';
                 modalGallery.appendChild(imgEl);
             });
+
+            // Toggle Gallery Arrows based on image count
+            if (imgs.length > 1) {
+                prevBtn.style.display = 'flex';
+                nextBtn.style.display = 'flex';
+            } else {
+                prevBtn.style.display = 'none';
+                nextBtn.style.display = 'none';
+            }
         }
 
         // 3. Link & Keywords
@@ -130,10 +129,26 @@ interactiveCards.forEach(card => {
     });
 });
 
+// Arrow Scrolling Logic
+if (prevBtn && nextBtn) {
+    prevBtn.addEventListener('click', () => {
+        modalGallery.scrollBy({ left: -modalGallery.clientWidth, behavior: 'smooth' });
+    });
+    nextBtn.addEventListener('click', () => {
+        modalGallery.scrollBy({ left: modalGallery.clientWidth, behavior: 'smooth' });
+    });
+}
+
 function closeModal() {
     if (modal) {
         modal.classList.remove('active');
         document.body.style.overflow = ''; 
+        
+        // Optimizes loading & prevents image ghosting by clearing content after fade out
+        setTimeout(() => {
+            modalGallery.innerHTML = '';
+            modalDesc.innerHTML = '';
+        }, 300); 
     }
 }
 
@@ -143,14 +158,14 @@ window.addEventListener('click', (e) => {
 });
 
 // ==========================================
-// 4. Scroll Active Menu Tracker (Fixed for tall sections)
+// 4. Scroll Active Menu Tracker
 // ==========================================
 const sections = document.querySelectorAll('section');
 const navLinks = document.querySelectorAll('.glass-nav a');
 
 const observerOptions = {
     root: null,
-    rootMargin: '-20% 0px -70% 0px', // Triggers when the section crosses the upper third of the screen
+    rootMargin: '-20% 0px -70% 0px', 
     threshold: 0 
 };
 
@@ -168,3 +183,56 @@ const observer = new IntersectionObserver((entries) => {
 }, observerOptions);
 
 sections.forEach(section => observer.observe(section));
+
+/*
+// ==========================================
+// 5. Interactive Hero Spotlight (Mix-Blend-Mode Reveal)
+// ==========================================
+const heroSection = document.querySelector('.hero-section');
+const heroSpotlight = document.querySelector('.hero-spotlight');
+
+if (heroSection && heroSpotlight) {
+    let spotlightTicking = false;
+
+    heroSection.addEventListener('mousemove', (e) => {
+        if (!spotlightTicking) {
+            requestAnimationFrame(() => {
+                // Get mouse position relative to the hero section
+                const rect = heroSection.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                // Pass coordinates to CSS variables
+                heroSpotlight.style.setProperty('--mouse-x', `${x}px`);
+                heroSpotlight.style.setProperty('--mouse-y', `${y}px`);
+                
+                spotlightTicking = false;
+            });
+            spotlightTicking = true;
+        }
+    });
+}
+*/
+
+// ==========================================
+// 5. Global Interactive Spotlight 
+// ==========================================
+const globalSpotlight = document.querySelector('.global-spotlight');
+
+if (globalSpotlight) {
+    let spotlightTicking = false;
+
+    // We listen to the whole window now, not just the hero section
+    window.addEventListener('mousemove', (e) => {
+        if (!spotlightTicking) {
+            requestAnimationFrame(() => {
+                // Pass raw screen coordinates directly to the CSS gradient
+                globalSpotlight.style.setProperty('--mouse-x', `${e.clientX}px`);
+                globalSpotlight.style.setProperty('--mouse-y', `${e.clientY}px`);
+                
+                spotlightTicking = false;
+            });
+            spotlightTicking = true;
+        }
+    });
+}
