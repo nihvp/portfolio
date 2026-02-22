@@ -91,7 +91,7 @@
                 <button class="filter-btn" data-filter="All">All</button>
                 <button class="filter-btn active" data-filter="Codes">Codes</button>
                 <button class="filter-btn" data-filter="Art">Art</button>
-                <button class="filter-btn" data-filter="Video">Video</button>
+                <button class="filter-btn" data-filter="Video">Videos</button>
                 <button class="filter-btn" data-filter="Photos">Photos</button>
             </div>
             
@@ -196,15 +196,22 @@
                 brainModel.scale.set(scaleRatio, scaleRatio, scaleRatio); 
                 
                 scene.add(brainModel);
+
+                // 1. Reveal the 3D Model
                 container.classList.add('loaded');
+                
+                // 2. Reveal the Brain Fact & Arrow
+                const brainFact = document.querySelector('.brain-fact');
+                if (brainFact) {
+                    brainFact.classList.add('loaded');
+                }
             },
             undefined,
             function (error) {
-                console.warn('3D Model blocked by browser CORS policy. Run via Local Server.', error);
+                console.warn('3D Model Error:', error);
             }
-        );
+        ); // <-- This is where the extra ")" usually hides!
 
-        // Passed "time" is a high-resolution timestamp, much more efficient than calling Date.now() every frame
         function animateModel(time) {
             requestAnimationFrame(animateModel);
             if (brainModel) {

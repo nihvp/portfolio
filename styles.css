@@ -138,6 +138,9 @@ body {
     
     z-index: 10;
     pointer-events: auto; 
+
+    opacity: 0; 
+    transition: opacity 2s ease-in-out; /* Matches the exact speed of the brain's fade-in */
 }
 
 .brain-arrow {
@@ -145,6 +148,10 @@ body {
     margin: 0; /* Resets any old margins */
     transform: scaleY(-1) rotate(60deg); /* Flips the arrow vertically and rotates it to point left */
     transform-origin: center; /* Ensures the arrow rotates around its center */
+}
+
+.brain-fact.loaded {
+    opacity: 1;
 }
 
 .fact-text {
