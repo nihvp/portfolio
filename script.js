@@ -70,10 +70,10 @@ const nextBtn = document.getElementById('gallery-next');
 interactiveCards.forEach(card => {
     card.addEventListener('click', () => {
         // 1. Inject HTML Content
-        const cardTitle = card.querySelector('.card-title') ? card.querySelector('.card-title').innerText : 'Project Details';
+        const cardTitle = card.querySelector('.card-title') ? card.querySelector('.card-title').innerHTML : 'Project Details';
         const hiddenHtml = card.querySelector('.modal-hidden-content') ? card.querySelector('.modal-hidden-content').innerHTML : '';
         
-        modalTitle.innerText = cardTitle;
+        modalTitle.innerHTML = cardTitle;
         modalDesc.innerHTML = hiddenHtml; // Allows <br>, FontAwesome icons, and custom styling
         
         // 2. Multi-Image Gallery Logic
