@@ -460,8 +460,8 @@ footer { text-align: center; padding: 30px; color: rgba(255, 255, 255, 0.4); fon
 /* --- Modal Title & Icon Alignment --- */
 .modal-title-wrapper {
     display: flex;
-    align-items: center; /* Vertically centers the icon with the text */
-    gap: 12px; /* Space between the title and the icon */
+    align-items: baseline; /* Aligns the icon to the text baseline */
+    gap: 12px; 
     margin-bottom: 15px; 
 }
 
