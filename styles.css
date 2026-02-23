@@ -2,6 +2,8 @@
     --glass-bg: rgba(255, 255, 255, 0.04);
     --glass-border: rgba(255, 255, 255, 0.1);
     --lime-green: #32CD32;
+    --olive: #988429;
+    --pale-pink: #EFD0CA;
     --text-color: #f0f0f0;
 }
 
@@ -73,7 +75,7 @@ body {
     transition: color 0.3s ease;
 }
 
-.glass-nav a:hover, .glass-nav a.active { color: var(--lime-green); }
+.glass-nav a:hover, .glass-nav a.active { color: var(--olive); }
 
 /* --- Hide default cursor everywhere --- */
 * {
@@ -186,19 +188,19 @@ body:hover .global-spotlight {
 #model-container.loaded { opacity: 1; }
 
 .hero-title {
-    font-size: 4rem;
+    font-size: 3rem;
     font-weight: 600;
-    color: #ffffff; 
+    color: var(--pale-pink); 
     mix-blend-mode: difference; 
     margin-bottom: 10px;
     letter-spacing: -2px;
 }
 
 .subheading {
-    color: #ffffff; 
+    color: var(--pale-pink); 
     mix-blend-mode: difference;
     font-size: 1rem;
-    font-weight: 400;
+    font-weight: 200;
     margin-bottom: 20px;
     letter-spacing: 5px;
     text-transform: uppercase;
@@ -206,13 +208,13 @@ body:hover .global-spotlight {
 
 .body-text {
     /* Updated to Comic Relief fallback structure */
-    font-family: 'Comic Relief', 'Comic Sans MS', cursive;
+    font-family: cursive;
     font-style: italic;
     font-size: 1rem; 
     font-weight: 300;
     max-width: 600px;
     margin-bottom: 40px;
-    color: #dfdfdf;
+    color: var(--pale-pink);
     mix-blend-mode: difference;
 }
 
@@ -231,7 +233,7 @@ body:hover .global-spotlight {
     text-decoration: none;
 }
 
-.social-links a:hover { color: var(--lime-green); }
+.social-links a:hover { color: var(--olive); }
 
 section {
     padding: 80px 20px;
@@ -320,7 +322,7 @@ section h2 {
 
 .filter-controls { display: flex; justify-content: center; gap: 15px; margin-bottom: 40px; }
 .filter-btn { background: transparent; border: 1px solid var(--glass-border); color: #fff; padding: 8px 24px; border-radius: 30px; cursor: pointer; transition: all 0.3s; }
-.filter-btn.active, .filter-btn:hover { background: var(--lime-green); color: #000; border-color: var(--lime-green); }
+.filter-btn.active, .filter-btn:hover { background: var(--pale-pink); color: #000; border-color: var(--olive); }
 
 .projects-grid, .experience-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(450px, 1fr)); gap: 30px; }
 
@@ -333,7 +335,7 @@ section h2 {
 /* Hides the detailed modal content from the main page view */
 .modal-hidden-content { display: none; }
 
-.keyword-tag { align-self: flex-start; background: rgba(255, 255, 255, 0.1); padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; color: var(--lime-green); text-transform: uppercase; letter-spacing: 1px; }
+.keyword-tag { align-self: flex-start; background: rgba(255, 255, 255, 0.1); padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; color: var(--olive); text-transform: uppercase; letter-spacing: 1px; }
 
 /* --- Enhanced Modal Styling --- */
 .modal-overlay {
@@ -429,7 +431,7 @@ section h2 {
 }
 
 .modal-gallery::-webkit-scrollbar { height: 8px; }
-.modal-gallery::-webkit-scrollbar-thumb { background: var(--lime-green); border-radius: 4px; }
+.modal-gallery::-webkit-scrollbar-thumb { background: var(--olive); border-radius: 4px; }
 .modal-gallery::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.1); border-radius: 4px; }
 
 .gallery-nav {
