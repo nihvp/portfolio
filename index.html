@@ -3,17 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <title>Muhammed Nihal | Portfolio</title>
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&family=Cedarville+Cursive&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer">
+
     <link rel="preload" href="assets/brain_3d.glb" as="fetch" crossorigin="anonymous">
-    
+
     <link rel="stylesheet" href="styles.css">
-    
+
     <script type="importmap">
       {
         "imports": {
@@ -28,11 +30,6 @@
 
     <div class="global-spotlight"></div>
 
-    <div class="bg-elements">
-        <div class="orb orb-1"></div>
-        <div class="orb orb-2"></div>
-        <div class="orb orb-3"></div>
-    </div>
 
     <nav class="glass-nav">
         <a href="#home">Home</a>
@@ -44,8 +41,6 @@
     <main>
         <section id="home" class="hero-section">
 
-            <!-- <div class="hero-spotlight"></div> -->
-
             <div class="hero-content">
                 
                 <div class="model-wrapper">
@@ -54,7 +49,33 @@
                 </div>
 
                 <h1 class="hero-title">Hi, I'm Muhammed Nihal</h1>
-                <h2 class="subheading">Code ❖ Create ❖ Enjoy</h2>
+                <div class="skills-marquee">
+                    <div class="skills-track">
+                        <span class="skill-tag"><i class="fa-brands fa-node-js"></i> Node.js</span>
+                        <span class="skill-tag"><i class="fa-brands fa-python"></i> Python</span>
+                        <span class="skill-tag"><i class="fa-solid fa-film"></i> DaVinci Resolve</span>
+                        <span class="skill-tag"><i class="fa-brands fa-react"></i> React</span>
+                        <span class="skill-tag"><i class="fa-brands fa-java"></i> Java</span>
+                        <span class="skill-tag"><i class="fa-solid fa-camera"></i> Photoshop</span>
+                        <span class="skill-tag"><i class="fa-solid fa-database"></i> SQL</span>
+                        <span class="skill-tag"><i class="fa-brands fa-figma"></i> Figma</span>
+                        <span class="skill-tag"><i class="fa-brands fa-git-alt"></i> Git</span>
+                        <span class="skill-tag"><i class="fa-solid fa-code"></i> C++</span>
+                        <span class="skill-tag"><i class="fa-brands fa-js"></i> JavaScript</span>
+                        <!-- Duplicate for seamless loop -->
+                        <span class="skill-tag"><i class="fa-brands fa-node-js"></i> Node.js</span>
+                        <span class="skill-tag"><i class="fa-brands fa-python"></i> Python</span>
+                        <span class="skill-tag"><i class="fa-solid fa-film"></i> DaVinci Resolve</span>
+                        <span class="skill-tag"><i class="fa-brands fa-react"></i> React</span>
+                        <span class="skill-tag"><i class="fa-brands fa-java"></i> Java</span>
+                        <span class="skill-tag"><i class="fa-solid fa-camera"></i> Photoshop</span>
+                        <span class="skill-tag"><i class="fa-solid fa-database"></i> SQL</span>
+                        <span class="skill-tag"><i class="fa-brands fa-figma"></i> Figma</span>
+                        <span class="skill-tag"><i class="fa-brands fa-git-alt"></i> Git</span>
+                        <span class="skill-tag"><i class="fa-solid fa-code"></i> C++</span>
+                        <span class="skill-tag"><i class="fa-brands fa-js"></i> JavaScript</span>
+                    </div>
+                </div>
                 <p class="body-text">Jack of all trades master of none, though oftentimes better than master of one.</p>
                 
                 <div class="social-links">
@@ -181,7 +202,7 @@
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
 
     <script type="module">
         import * as THREE from 'three';

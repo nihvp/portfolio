@@ -184,38 +184,8 @@ const observer = new IntersectionObserver((entries) => {
 
 sections.forEach(section => observer.observe(section));
 
-/*
 // ==========================================
-// 5. Interactive Hero Spotlight (Mix-Blend-Mode Reveal)
-// ==========================================
-const heroSection = document.querySelector('.hero-section');
-const heroSpotlight = document.querySelector('.hero-spotlight');
-
-if (heroSection && heroSpotlight) {
-    let spotlightTicking = false;
-
-    heroSection.addEventListener('mousemove', (e) => {
-        if (!spotlightTicking) {
-            requestAnimationFrame(() => {
-                // Get mouse position relative to the hero section
-                const rect = heroSection.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                
-                // Pass coordinates to CSS variables
-                heroSpotlight.style.setProperty('--mouse-x', `${x}px`);
-                heroSpotlight.style.setProperty('--mouse-y', `${y}px`);
-                
-                spotlightTicking = false;
-            });
-            spotlightTicking = true;
-        }
-    });
-}
-*/
-
-// ==========================================
-// 5. Global Interactive Spotlight 
+// 5. Global Interactive Spotlight
 // ==========================================
 const globalSpotlight = document.querySelector('.global-spotlight');
 

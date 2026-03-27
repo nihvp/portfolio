@@ -12,6 +12,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Inter', sans-serif;
+    cursor: none !important;
 }
 
 body {
@@ -28,8 +29,6 @@ body {
     pointer-events: none;
     z-index: -2;
     background-image: url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)" opacity="0.06"/%3E%3C/svg%3E');
-    animation: texturePulse 10s infinite alternate ease-in-out;
-    will-change: transform, opacity;
 }
 
 .glass-nav {
@@ -77,11 +76,6 @@ body {
 
 .glass-nav a:hover, .glass-nav a.active { color: var(--olive); }
 
-/* --- Hide default cursor everywhere --- */
-* {
-    cursor: none !important;
-}
-
 /* --- Global Interactive Spotlight --- */
 .global-spotlight {
     position: fixed; /* Locks the canvas to your screen viewport */
@@ -99,26 +93,6 @@ body {
 
 /* Fades the light in when the mouse is anywhere on the page */
 body:hover .global-spotlight {
-    opacity: 1;
-}
-
-/* --- Interactive Hero Spotlight --- */
-.hero-spotlight {
-    position: absolute;
-    top: 0; left: 0; 
-    width: 100%; height: 100%;
-    pointer-events: none;
-    z-index: 0; /* Sits behind the text */
-    
-    /* Creates a glowing orb that follows CSS variables */
-    background: radial-gradient(40px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255, 255, 255, 0.9) 0%, transparent 60%);
-    
-    opacity: 0; 
-    transition: opacity 0.5s ease;
-}
-
-/* Fades in smoothly when you hover over the section */
-.hero-section:hover .hero-spotlight {
     opacity: 1;
 }
 
@@ -196,14 +170,61 @@ body:hover .global-spotlight {
     letter-spacing: -2px;
 }
 
-.subheading {
-    color: var(--pale-pink); 
-    mix-blend-mode: difference;
-    font-size: 1rem;
-    font-weight: 200;
+/* --- Skills Marquee --- */
+.skills-marquee {
+    width: 100%;
+    max-width: 600px;
+    overflow: hidden;
     margin-bottom: 20px;
-    letter-spacing: 5px;
-    text-transform: uppercase;
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.skills-track {
+    display: flex;
+    gap: 20px;
+    width: max-content;
+    animation: marquee 20s linear infinite;
+    will-change: transform;
+    backface-visibility: hidden;
+}
+
+.skill-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: var(--pale-pink);
+    white-space: nowrap;
+    transition: all 0.3s ease;
+}
+
+.skill-tag i {
+    font-size: 1rem;
+    color: var(--lime-green);
+}
+
+.skills-marquee:hover .skills-track {
+    animation-play-state: paused;
+}
+
+.skill-tag:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--lime-green);
+}
+
+@keyframes marquee {
+    0% {
+        transform: translate3d(0, 0, 0);
+    }
+    100% {
+        transform: translate3d(-50%, 0, 0);
+    }
 }
 
 .body-text {
@@ -470,9 +491,15 @@ footer { text-align: center; padding: 30px; color: rgba(255, 255, 255, 0.4); fon
 }
 
 @media(max-width: 768px) {
-    .hero-title { font-size: 3rem; }
+    .hero-title { padding: 0 50px; }
+    .body-text { font-size: 0.5 rem; padding: 0 50px; }
     .glass-nav { gap: 15px; padding: 15px 20px; flex-wrap: wrap; }
     .about-container { flex-direction: column; text-align: center; }
     .projects-grid, .experience-grid { grid-template-columns: 1fr; }
     .model-wrapper { width: 240px; height: 240px; }
+}
+
+@media(max-width: 400px) {
+    .hero-title { font-size: 1.5rem;  padding: 0 30px; }
+    .body-text { font-size: 0.4 rem; padding: 0 30px; }
 }
