@@ -495,7 +495,7 @@ footer { text-align: center; padding: 30px; color: rgba(255, 255, 255, 0.4); fon
 
 @media(max-width: 768px) {
     .hero-title { padding: 0 50px; }
-    .body-text { font-size: 0.5 rem; padding: 0 50px; }
+    .body-text { font-size: 0.5 rem; padding: 0 70px; }
     .glass-nav { gap: 15px; padding: 15px 20px; flex-wrap: wrap; }
     .about-container { flex-direction: column; text-align: center; }
     .projects-grid, .experience-grid { grid-template-columns: 1fr; }
@@ -503,6 +503,6 @@ footer { text-align: center; padding: 30px; color: rgba(255, 255, 255, 0.4); fon
 }
 
 @media(max-width: 400px) {
-    .hero-title { font-size: 1.5rem;  padding: 0 30px; }
-    .body-text { font-size: 0.4 rem; padding: 0 30px; }
+    .hero-title { font-size: 1.5rem;  padding: 0 50px; }
+    .body-text { font-size: 0.4 rem; padding: 0 70px; }
 }
