@@ -15,10 +15,13 @@
     cursor: none !important;
 }
 
+html, body {
+    overflow-x: hidden;
+}
+
 body {
     background-color: #3A2618;
     color: var(--text-color);
-    overflow-x: hidden;
     position: relative;
 }
 
